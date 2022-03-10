@@ -10,7 +10,8 @@ def main():
 
     for idx, line in enumerate(text):
         if line == split_line:
-            # Need to change match process to use included comments in courses.html
+            # Need to change match process to use included comments in courses.html. Best to use an indexed search,
+            # breaking up the file into groupings of lines based on the split_line variable
             hall_room_str = re.match('<td[^>]*>(.*?)</td>', text[idx+12]).group(1)
             hall = '' if hall_room_str == 'None' else hall_room_str.split(' - ')[0]
             room = -1 if hall_room_str == 'None' else hall_room_str.split(' - ')[0][3:]
